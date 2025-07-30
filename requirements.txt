@@ -2,3 +2,5 @@ ccxt
 schedule
 requests
 python-telegram-bot
+python-dotenv
+pyTelegramBotAPI==4.16.1
