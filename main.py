@@ -2,15 +2,22 @@ import threading
 import schedule, time
 from src.signal_engine import scan_and_send_signals
 from src.telegram_bot import send_daily_pnl
+from telegram_listener import run_bot 
 
 def job():
     scan_and_send_signals()
 def start_listener():
-    run_bot()   # This will run the Telegram command listener
+    print("📡 Starting Telegram listener...")
+    run_bot()   # Starts the Telegram bot commands
 
-if __name__ == "__main__":
-    # Start Telegram listener in a background thread
+def start_worker():
+    print("🚀 Starting CryptoChamps signal engine...")
+    scan_and_send_signals()  # Runs your signal logic
+
+iif __name__ == "__main__":
+    # Start Telegram listener in a separate thread
     listener_thread = threading.Thread(target=start_listener)
+    listener_thread.daemon = True  # ✅ allows process to exit cleanly if main stops
     listener_thread.start()
 
     # Start worker (signals)
