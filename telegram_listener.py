@@ -5,9 +5,23 @@ import os
 from src.telegram_bot import send_signal
 from src.pnl_tracker import get_daily_pnl_summary
 from src.telegram_bot import bot
+from flask import Flask, request
 
+app = Flask(__name__)
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
+@app.route('/' + TOKEN, methods=['POST'])
+def getMessage():
+    json_str = request.get_data().decode('UTF-8')
+    update = telebot.types.Update.de_json(json_str)
+    bot.process_new_updates([update])
+    return "!", 200
+
+@app.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url=f"https://{os.getenv('RAILWAY_URL')}/{TOKEN}")
+    return "Webhook set", 200
 # /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("✅ CryptoChampsBot is online and ready!")
