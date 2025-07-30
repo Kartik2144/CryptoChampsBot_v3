@@ -14,7 +14,7 @@ def start_worker():
     print("🚀 Starting CryptoChamps signal engine...")
     scan_and_send_signals()  # Runs your signal logic
 
-iif __name__ == "__main__":
+if __name__ == "__main__":
     # Start Telegram listener in a separate thread
     listener_thread = threading.Thread(target=start_listener)
     listener_thread.daemon = True  # ✅ allows process to exit cleanly if main stops
