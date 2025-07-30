@@ -1,1 +1,2 @@
-worker: python telegram_listener.py
+worker: python main.py
+listener: python telegram_listener.py
