@@ -4,6 +4,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import os
 from src.telegram_bot import send_signal
 from src.pnl_tracker import get_daily_pnl_summary
+from src.telegram_bot import bot
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
