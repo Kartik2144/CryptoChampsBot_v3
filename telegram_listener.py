@@ -34,6 +34,8 @@ async def pnl(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def run_bot():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
+    print("✅ Telegram bot listener running...")
+    bot.infinity_polling()   # or updater.start_polling() depending on your library
     # Register commands
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("testsignal", testsignal))
