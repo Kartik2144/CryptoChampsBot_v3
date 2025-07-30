@@ -1,6 +1,6 @@
 import schedule, time
 from src.signal_engine import scan_and_send_signals
-from src.telegram_bot import send_daily_pnl, send_no_signal_report
+from src.telegram_bot import send_daily_pnl
 
 def job():
     scan_and_send_signals()
