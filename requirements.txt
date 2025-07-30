@@ -1,0 +1,4 @@
+ccxt
+schedule
+requests
+python-telegram-bot
