@@ -5,9 +5,7 @@ import os
 from src.telegram_bot import send_signal
 from src.pnl_tracker import get_daily_pnl_summary
 from src.telegram_bot import bot
-from flask import Flask, request
 
-app = Flask(__name__)
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 @app.route('/' + TOKEN, methods=['POST'])
@@ -49,6 +47,7 @@ async def pnl(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def run_bot():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     print("✅ Telegram bot listener running...")
+    bot.delete_webhook()   # 🚨 Important to avoid 409 error
     bot.infinity_polling()   # or updater.start_polling() depending on your library
     
     # Register commands
