@@ -10,7 +10,6 @@ schedule.every(30).minutes.do(job)
 
 # Daily PnL & fail-safe signal at midnight IST
 schedule.every().day.at("23:55").do(send_daily_pnl)
-schedule.every().day.at("23:56").do(send_no_signal_report)
 
 print("🚀 CryptoChampsBot_v3 started...")
 
